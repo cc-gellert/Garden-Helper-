@@ -2,7 +2,7 @@ require_relative './garden_plot.rb'
 require_relative './plant.rb'
 require_relative './scraper.rb'
 
-class CLI 
+class CommandLineInterface  
   def run
     get_plants
     add_plant_attributes
