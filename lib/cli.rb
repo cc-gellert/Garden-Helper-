@@ -96,8 +96,12 @@ class CommandLineInterface
     end 
   end 
   def display_plots 
-    GardenPlot.all.each do |plot|
-      puts "#{plot.name} has #{plants} and #{footage} square feet."
+    if(GardenPlot.all.length == 0 )
+      puts "There are currently no plots in this collection."
+    else 
+      GardenPlot.all.each do |plot|
+        puts "#{plot.name} has #{plants} and #{footage} square feet."
+      end 
     end 
   end 
   def display_plot(name)
