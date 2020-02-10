@@ -21,6 +21,11 @@ class CommandLineInterface
     end
   end
   def greeting 
+    puts "Hello! Welcome to Garden-Helper! What would you like to do?"
+    input = gets.strip 
+    while input != "exit"
+    switch(input)
+    case 
   end 
   def display_plants
     Plant.all.each do |plant|

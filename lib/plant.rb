@@ -24,8 +24,21 @@ class Plant
     end 
     self 
   end 
-  #def find_by_name(name)
-  #end 
-  #def print 
-  #end 
+  def self.find_by_name(name)
+    self.all.select {|plant| plant.name == name}
+  end 
+  def print
+    puts "#{self.name} is a #{self.season} season crop."
+    puts "Recommended spacing is #{self.spacing} plants per square foot."
+    puts "Recommended sun amount is #{self.sun} and for watering it #{self.watering}."
+    puts "Time to harvest is #{self.harvesttime} days."
+    puts "Good companion plants for #{self.name} are:"
+    self.companions.each do |companion|
+      puts "#{companion}."
+    end 
+    puts "Plants to avoid are:"
+    self.enemies.each do |enemy|
+      puts "#{enemy}."
+    end 
+  end 
 end 
