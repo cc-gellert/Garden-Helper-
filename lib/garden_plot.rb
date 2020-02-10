@@ -2,11 +2,11 @@ class GardenPlot
   attr_accessor :footage, :name, :plants, :footageleft   
   @@all = []
   extends 
-  def initialize(footage, name=nil)
+  def initialize(footage, name)
     @footage = footage 
     @name = name
     @footageleft = footage 
-    @plants = [] 
+    @plants = {} 
     save 
   end 
   def self.all 
@@ -27,6 +27,9 @@ class GardenPlot
   end 
   def self.find_by_name(name)
     self.all.select {|plot| plot.name == name}
+  end
+  def self.delete_by_name(name)
+    self.all.sort {|plot| plot.name != name} 
   end 
   def print
     puts "#{self.name} garden plot is #{self.footage} square feet and has:"
