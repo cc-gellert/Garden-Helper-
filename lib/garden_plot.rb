@@ -37,7 +37,7 @@ class GardenPlot
     self.all.select {|plot| plot.name == name}
   end
   def self.delete_by_name(name)
-    self.all.filter {|plot| plot.name != name} 
+    self.all.select {|plot| plot.name != name} 
   end 
   def print
     puts "#{self.name} garden plot is #{self.footage} square feet and has:"
