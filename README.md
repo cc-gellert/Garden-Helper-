@@ -1,8 +1,6 @@
 # GardenHelper
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/garden_helper`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to GardenHelper, a fun and useful CLI application for garden planning and growing. Use this app to access growing guides and plant information, as well as plotting out your dream garden based on available space in your plot. Look up individual plant guides for information on growing times, spacing needs, companion plants, and plants to avoid. Or input the space you have available and add plants to it until full. Your spring and autumn garden planning just got much easier! 
 
 ## Installation
 
