@@ -1,9 +1,11 @@
 require 'open-uri'
 require 'nokogiri'
+require 'pry'
 
 class Scraper 
   def self.scrape_index_page(url)
     index = Nokogiri::HTML(open(url))
+    binding.pry 
     plants = [] 
     index.css("ion-no-padding.item.md.in-list.ion-focusable.hydrated").each do |plant| 
       plant_name = plant.css("h2.ion-text-wrap").text
