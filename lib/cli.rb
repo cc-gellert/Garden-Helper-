@@ -26,31 +26,31 @@ class CommandLineInterface
   end 
   def ask_for_input 
     puts "What would you like to do?"
-    input = nil 
-    while input != "exit"
-      input = gets.strip.downcase 
-      case input 
-      when "lookup a plant"
-        display_plant
-        ask_for_input 
-      when "lookup a garden plot"
-        display_plot
-        ask_for_input
-      when "list all plants" || "list plants"
-        display_plants 
-        ask_for_input
-      when "view garden plots" || "view plots"
-        display_plots 
-        ask_for_input
-      when "plan a new garden plot" || "new plot"
-        add_plot 
-        ask_for_input
-      when "edit a garden plot" || "edit plot"
-        edit_plot 
-        ask_for_input
-      else 
-        puts "Sorry, that doesn't look like a recognized command. You may lookup a plant, lookup a garden plot, list all plants, plan a new garden plot, view your garden plots, or edit a garden plot."
-      end 
+    input = gets.strip.downcase 
+    case input 
+    when "lookup a plant"
+      display_plant
+      ask_for_input 
+    when "lookup a garden plot"
+      display_plot
+      ask_for_input
+    when "list all plants" || "list plants"
+      display_plants 
+      ask_for_input
+    when "view garden plots" || "view plots"
+      display_plots 
+      ask_for_input
+    when "plan a new garden plot" || "new plot"
+      add_plot 
+      ask_for_input
+    when "edit a garden plot" || "edit plot"
+      edit_plot 
+      ask_for_input
+    when "quit"
+      goodbye 
+      exit 
+    else 
+      puts "Sorry, that doesn't look like a recognized command. You may lookup a plant, lookup a garden plot, list all plants, plan a new garden plot,view your garden plots, or edit a garden plot."
     end 
   end 
   
@@ -128,6 +128,6 @@ class CommandLineInterface
     end 
   end
   def goodbye 
-    puts "Goodbye!"
+    puts "Goodbye! Have a great day."
   end 
 end 
