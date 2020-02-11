@@ -30,7 +30,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/'diplomatic-invocation-3884'/garden_helper.
+Bug reports and pull requests are welcome on GitHub at https://github.com/cc-gellert/Garden-Helper-.
 
 ## License
 

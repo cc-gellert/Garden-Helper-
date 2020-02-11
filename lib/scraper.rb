@@ -4,7 +4,7 @@ require 'pry'
 
 class Scraper 
   def self.scrape_index_page(url)
-    index = Nokogiri::HTML(open(url))
+    index = Nokogiri::HTML(open('https://app.seedtospoon.net/tabs/plant-list'))
     binding.pry 
     plants = [] 
     index.css("ion-no-padding.item.md.in-list.ion-focusable.hydrated").each do |plant| 
