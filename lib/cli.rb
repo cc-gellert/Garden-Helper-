@@ -47,7 +47,7 @@ class CommandLineInterface
         edit_plot 
         ask_for_input
       else 
-        puts "Sorry, that doesn't look like a recognized command. You may lookup a plant, lookup a garden plot, list all plants, view garden plots, plan a new garden plot, edit a garden plot, or exit."
+        puts "Sorry, that doesn't look like a recognized command. You may lookup a plant, lookup a garden plot, list all plants, plan a new garden plot, view your garden plots, or edit a garden plot."
       end 
     end 
   end 
@@ -64,11 +64,13 @@ class CommandLineInterface
       puts "Sorry, there isn't a plant by that name in our collection."
     end 
   end 
+  
   def display_plants
     Plant.all.each do |plant|
       puts "#{plant.name}"
     end 
   end 
+  
   def display_plots 
     if(GardenPlot.all.length == 0 )
       puts "There are currently no plots in this collection."
@@ -77,7 +79,8 @@ class CommandLineInterface
         puts "#{plot.name} has #{plants} and #{footage} square feet."
       end 
     end 
-  end 
+  end
+  
   def display_plot
     puts "Ok, what is the name of the plot you are looking for?"
     name = gets.strip 
@@ -88,6 +91,7 @@ class CommandLineInterface
       puts "Sorry, there isn't a plot by that name in this collection."
     end 
   end
+  
   def add_plot 
     puts "Great! What would you like to call this new plot?"
     name = gets.strip 
@@ -96,6 +100,7 @@ class CommandLineInterface
     new_plot = GardenPlot.new(footage, name)
     new_plot.print 
   end 
+  
   def edit_plot
       puts "Ok, great. What is the name of the plot you would like to change?"
       name = gets.strip 
