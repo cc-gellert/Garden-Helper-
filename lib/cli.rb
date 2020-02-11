@@ -3,6 +3,9 @@ require_relative './plant.rb'
 require_relative './scraper.rb'
 
 class CommandLineInterface  
+  
+  base_url = "https://app.seedtospoon.net"
+  
   def run
     get_plants
     add_plant_attributes
@@ -11,12 +14,12 @@ class CommandLineInterface
   end
 
   def get_plants
-    plants_array = Scraper.scrape_index_page('https://app.seedtospoon.net/tabs/plant-list')
+    plants_array = Scraper.scrape_index_page(base_url + "/tabs/plant-list")
     Plant.create_from_array(plants_array)
   end
   def add_plant_attributes
     Plant.all.each do |plant|
-      attributes = Scraper.scrape_plant(plant.profile_url)
+      attributes = Scraper.scrape_plant(plant[plant_profile_url])
       plant.add_plant_attributes(attributes)
     end
   end
