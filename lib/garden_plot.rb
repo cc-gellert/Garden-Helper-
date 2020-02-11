@@ -22,6 +22,7 @@ class GardenPlot
       @footageleft += (number * found_plant_object.spacing)
     else 
       puts "There are only #{@plants[plant]} #{plant} plants here."
+    end 
   end 
   def addPlant(plant, number=1)
     found_plant_object = Plant.find_by_name(plant)

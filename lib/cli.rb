@@ -3,9 +3,6 @@ require_relative './plant.rb'
 require_relative './scraper.rb'
 
 class CommandLineInterface  
-  
-  base_url = "https://app.seedtospoon.net"
-  
   def run
     get_plants
     add_plant_attributes
@@ -14,6 +11,7 @@ class CommandLineInterface
   end
 
   def get_plants
+    base_url = "https://app.seedtospoon.net"
     plants_array = Scraper.scrape_index_page(base_url + "/tabs/plant-list")
     Plant.create_from_array(plants_array)
   end
