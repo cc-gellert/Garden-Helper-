@@ -1,7 +1,6 @@
 class GardenPlot 
   attr_accessor :footage, :name, :plants, :footageleft   
   @@all = []
-  extends 
   def initialize(footage, name)
     @footage = footage 
     @name = name
