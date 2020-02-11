@@ -26,8 +26,9 @@ class CommandLineInterface
   end 
   def ask_for_input 
     puts "What would you like to do?"
-    input = gets.strip.downcase  
+    input = nil 
     while input != "exit"
+      input = gets.strip.downcase 
       case input 
       when "lookup a plant"
         display_plant
@@ -108,7 +109,6 @@ class CommandLineInterface
       display_plot(name)
       puts "Would you like to add plants, remove plants, or delete this plot?"
       input = gets.strip.downcase  
-      while input != "quit"
       if input == "add plants" || "add"
         puts "What plant would you like to add?"
         plant = gets.strip.capitalize 
@@ -128,4 +128,7 @@ class CommandLineInterface
       end 
     end 
   end
+  def goodbye 
+    puts "Goodbye!"
+  end 
 end 
