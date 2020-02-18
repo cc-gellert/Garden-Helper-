@@ -44,6 +44,7 @@ class CommandLineInterface
       exit 
     else 
       puts "Sorry, that doesn't look like a recognized command. You may lookup a plant, lookup a garden plot, list all plants, plan a new garden plot,view your garden plots, or edit a garden plot."
+      ask_for_input
     end 
   end 
   

@@ -9,14 +9,16 @@ class Scraper
     plants = [] 
     rows = @doc.search("tbody tr")
     rows.each do |plant| 
-      plant_text = plant.css("td")[0].text.split("-")
-      plant_name = plant_text[0].to_s.capitalize 
-      space_string = plant.css("td")[1].text
-      plant_spacing = space_string.gsub!("(", "-").split("-")[0].to_i
-      plants << {name: plant_name, spacing: plant_spacing}
+      first_text = plant.css("td")[0].text.strip
+      second_text = plant.css("td")[1].text.strip 
+      if(second_text != "") && (second_text != " ") && (first_text != "Plant Variety")
+        plant_name = first_text.split("-")[0].to_s.capitalize 
+        plant_spacing = second_text.split("-")[0].to_i
+        plants << {name: plant_name, spacing: plant_spacing}
+      end 
     end 
     plants
   end 
 end 
 
-#need to take out headings for fruit, herbs, and plant variety/plants per square 
+#gsub returns nil if no changes 
