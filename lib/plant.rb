@@ -25,7 +25,7 @@ class Plant
     self 
   end 
   def self.find_by_name(name)
-    self.all.select {|plant| plant.name == name}
+    self.all.select {|plant| plant.name.include?(name)}
   end 
   def print
     puts "#{@name} is a #{@season} season crop."
