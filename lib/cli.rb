@@ -5,7 +5,6 @@ require_relative './scraper.rb'
 class CommandLineInterface  
   def run
     get_plants
-    add_plant_attributes
     greeting
     ask_for_input 
   end
@@ -14,12 +13,6 @@ class CommandLineInterface
     base_url = "https://www.marysheirloomseeds.com/blogs/news/square-foot-garden-plant-spacing-chart"
     plants_array = Scraper.scrape_index_page(base_url)
     Plant.create_from_array(plants_array)
-  end
-  def add_plant_attributes
-    Plant.all.each do |plant|
-      attributes = Scraper.scrape_plant(plant[plant_profile_url])
-      plant.add_plant_attributes(attributes)
-    end
   end
   def greeting 
     puts "Hello! Welcome to Garden-Helper! Here you can lookup a plant, lookup a garden plot, list all plants, plan a new garden plot, view your garden plots, or edit a garden plot."

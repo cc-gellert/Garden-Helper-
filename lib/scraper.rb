@@ -10,24 +10,13 @@ class Scraper
     rows = @doc.search("tbody tr")
     rows.each do |plant| 
       plant_text = plant.css("td")[0].text.split("-")
-      plant_name = plant_text.map {|word| word.capitalize}.join(" ")
-      plant_spacing = plant.css("td")[1].text #will need to convert to integer later and take out ranges 
+      plant_name = plant_text[0].to_s.capitalize 
+      space_string = plant.css("td")[1].text
+      plant_spacing = space_string.gsub!("(", "-").split("-")[0].to_i
       plants << {name: plant_name, spacing: plant_spacing}
     end 
     plants
   end 
-
-  # def self.scrape_plant(profileurl)
-  #   page = Nokogiri::HTML(open(profileurl))
-  #   plant = {} 
-  #   doc = page.css("")
-  #   plant[:spacing] = 
-  #   plant[:season] = 
-  #   plant[:sun] = 
-  #   plant[:watering] = 
-  #   plant[:harvesttime] = 
-  #   plant[:companions] = 
-  #   plant[:enemies] = 
-  #   plant 
-  # end 
 end 
+
+#need to take out headings for fruit, herbs, and plant variety/plants per square 
