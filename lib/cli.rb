@@ -11,8 +11,8 @@ class CommandLineInterface
   end
 
   def get_plants
-    base_url = "https://app.seedtospoon.net"
-    plants_array = Scraper.scrape_index_page(base_url + "/tabs/plant-list")
+    base_url = "https://www.marysheirloomseeds.com/blogs/news/square-foot-garden-plant-spacing-chart"
+    plants_array = Scraper.scrape_index_page(base_url)
     Plant.create_from_array(plants_array)
   end
   def add_plant_attributes
@@ -46,7 +46,7 @@ class CommandLineInterface
     when "edit a garden plot" || "edit plot"
       edit_plot 
       ask_for_input
-    when "quit"
+    when "quit" || "exit"
       goodbye 
       exit 
     else 

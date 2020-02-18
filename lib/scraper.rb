@@ -3,17 +3,19 @@ require 'nokogiri'
 require 'pry'
 
 class Scraper 
+  attr_accessor :doc 
   def self.scrape_index_page(url)
-    index = Nokogiri::HTML(open(url))
+    @doc = Nokogiri::HTML(open(url))
     plants = [] 
-    index.css("ion-no-padding.item.md.in-list.ion-focusable.hydrated").each do |plant| 
-      plant_name = plant.css("h2.ion-text-wrap").text
-      plant_profile_url = blablabla 
-      plants << {name: plant_name, profile: plant_profile_url}
+    rows = @doc.search("tbody tr")
+    rows.each do |plant| 
+      plant_name = plant.css("td")[0].text
+      plant_spacing = plant.css("td")[1].text
+      plants << {name: plant_name, spacing: plant_spacing}
     end 
-    plants 
+    plants
   end 
-  binding.pry 
+
   def self.scrape_plant(profileurl)
     page = Nokogiri::HTML(open(profileurl))
     plant = {} 
