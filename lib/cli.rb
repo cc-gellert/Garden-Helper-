@@ -18,6 +18,7 @@ class CommandLineInterface
     puts "Hello! Welcome to Garden-Helper! Here you can lookup a plant, lookup a garden plot, list all plants, plan a new garden plot, view your garden plots, or edit a garden plot."
   end 
   def ask_for_input 
+    puts "---------------------------"
     puts "What would you like to do?"
     input = gets.strip.downcase 
     case input 
@@ -67,7 +68,6 @@ class CommandLineInterface
     Plant.all.each do |plant|
       puts "#{plant.name}"
     end 
-    puts "------------------------"
   end 
   
   def display_plots 
