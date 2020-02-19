@@ -63,9 +63,11 @@ class CommandLineInterface
   end 
   
   def display_plants
+    puts "------------------------"
     Plant.all.each do |plant|
       puts "#{plant.name}"
     end 
+    puts "------------------------"
   end 
   
   def display_plots 
@@ -73,8 +75,8 @@ class CommandLineInterface
       puts "There are currently no plots in this collection."
     else 
       GardenPlot.all.each do |plot|
-        puts "#{plot.name} has #{plot.footage} square feet."
-        plot.plants.each {|plant| puts "#{plant}."} 
+        puts "Garden Plot #{plot.name} is #{plot.footage} square feet."
+        plot.plants.each {|plant, value| puts "It has #{value} #{plant}."} 
       end 
     end 
   end
@@ -115,7 +117,6 @@ class CommandLineInterface
           puts "Ok, how many would you like to add?"
           number = gets.strip.to_i 
           found_plot.addPlant(plant, number)
-          #need to have found plot readded- not defined on found_plant object 
         else 
           puts "I'm sorry, that plant doesn't seem to exist in our database."
         end
