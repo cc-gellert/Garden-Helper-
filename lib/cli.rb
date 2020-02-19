@@ -149,6 +149,3 @@ class CommandLineInterface
     puts "Goodbye! Have a great day."
   end 
 end 
-
-##need error handling for remove plants that don't exist, and add plants that don't exist 
-#need to convert number input to integer ! 

@@ -12,7 +12,8 @@ class Scraper
       first_text = plant.css("td")[0].text.strip
       second_text = plant.css("td")[1].text.strip 
       if(second_text != "") && (second_text != " ") && (first_text != "Plant Variety")
-        plant_name = first_text.split("-")[0].to_s.capitalize 
+        plant_split = first_text.split(/ |-/)
+        plant_name = plant_split.map {|word| word.strip.capitalize}.join(" ")
         plant_spacing = second_text.split("-")[0].to_i
         plants << {name: plant_name, spacing: plant_spacing}
       end 
@@ -20,4 +21,3 @@ class Scraper
     plants
   end 
 end 
-#need to take out 2nd beans- add duplicate verification to method 
