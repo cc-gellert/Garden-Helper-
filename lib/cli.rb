@@ -27,19 +27,19 @@ class CommandLineInterface
     when "lookup a garden plot"
       display_plot
       ask_for_input
-    when "list all plants" || "list plants"
+    when "list all plants", "list plants"
       display_plants 
       ask_for_input
-    when "view garden plots" || "view plots"
+    when "view garden plots", "view plots"
       display_plots 
       ask_for_input
-    when "plan a new garden plot" || "new plot"
+    when "plan a new garden plot", "new plot"
       add_plot 
       ask_for_input
-    when "edit a garden plot" || "edit plot"
+    when "edit a garden plot", "edit a plot", "edit plot"
       edit_plot 
       ask_for_input
-    when "quit" || "exit"
+    when "quit", "exit"
       goodbye 
       exit 
     else 
@@ -48,7 +48,7 @@ class CommandLineInterface
     end 
   end 
   
-  #other methods 
+  #helper methods 
   
   def display_plant
     puts "Great! What plant are you looking for?"

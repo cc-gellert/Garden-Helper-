@@ -20,5 +20,4 @@ class Scraper
     plants
   end 
 end 
-
-#gsub returns nil if no changes 
+#need to take out 2nd beans- add duplicate verification to method 
