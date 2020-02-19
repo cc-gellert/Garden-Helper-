@@ -91,7 +91,7 @@ class CommandLineInterface
     puts "Great! What would you like to call this new plot?"
     name = gets.strip 
     puts "Ok, got it. And how many square feet does it have?"
-    footage = gets.strip 
+    footage = gets.strip.to_i  
     new_plot = GardenPlot.new(footage, name)
     new_plot.print_self 
   end 
@@ -110,7 +110,7 @@ class CommandLineInterface
         plant = gets.strip.capitalize
         if (verify_plant?(plant)) 
           puts "Ok, how many would you like to add?"
-          number = gets.strip 
+          number = gets.strip.to_i 
           found_plot.addPlant(plant, number)
         else 
           puts "I'm sorry, that plant doesn't seem to exist in our database."
@@ -120,7 +120,7 @@ class CommandLineInterface
         plant = gets.strip.capitalize 
         if (verify_plant?(plant)) 
           puts "Ok, how many would you like to add?"
-          number = gets.strip 
+          number = gets.strip.to_i  
           found_plot.removePlant(plant, number)
         else 
           puts "I'm sorry, that doesn't appear to be a plant in this plot."
@@ -151,3 +151,4 @@ class CommandLineInterface
 end 
 
 ##need error handling for remove plants that don't exist, and add plants that don't exist 
+#need to convert number input to integer ! 
