@@ -104,30 +104,50 @@ class CommandLineInterface
       found_plot.print_self
       puts "Would you like to add plants, remove plants, or delete this plot?"
       input = gets.strip.downcase  
-      if input == "add plants", "add"
+      case input 
+      when "add plants", "add"
         puts "What plant would you like to add?"
-        plant = gets.strip.capitalize 
-        puts "Ok, how many would you like to add?"
-        number = gets.strip 
-        found_plot.addPlant(plant, number)
-      elsif input == "remove plants", "remove"
+        plant = gets.strip.capitalize
+        if (verify_plant?(plant)) 
+          puts "Ok, how many would you like to add?"
+          number = gets.strip 
+          found_plot.addPlant(plant, number)
+        else 
+          puts "I'm sorry, that plant doesn't seem to exist in our database."
+        end
+      when "remove plants", "remove"
         puts "What plant would you like to remove?"
         plant = gets.strip.capitalize 
-        puts "Ok, how many would you like to add?"
-        number = gets.strip 
-        found_plot.removePlant(plant, number)
-      elsif input == "delete this plot", "delete"
+        if (verify_plant?(plant)) 
+          puts "Ok, how many would you like to add?"
+          number = gets.strip 
+          found_plot.removePlant(plant, number)
+        else 
+          puts "I'm sorry, that doesn't appear to be a plant in this plot."
+        end 
+      when "delete this plot", "delete"
         GardenPlot.delete_by_name(name) 
+        puts "Ok, this plot has been deleted." 
       else 
-        puts "I'm sorry, that's not a recognized command."
-      end
+        puts "Sorry, that's not a recognized command."
+      end 
     else 
       puts "Sorry, there isn't a plot by that name in this collection."
     end 
   end
+  
+  def verify_plant?(plant)
+    found_plant = Plant.find_by_name(plant)
+    if !(found_plant)
+      false
+    else 
+      true  
+    end 
+  end 
+  
   def goodbye 
     puts "Goodbye! Have a great day."
   end 
 end 
 
-##need error handling for delete, remove plants that don't exist, and add plants that don't exist 
+##need error handling for remove plants that don't exist, and add plants that don't exist 
