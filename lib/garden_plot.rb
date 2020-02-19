@@ -47,3 +47,6 @@ class GardenPlot
     puts "There is #{@footageleft} square feet left in this plot."
   end 
 end 
+
+##need error message for remove plants if empty 
+#need to add error handling for adding plants that don't exist or will break 

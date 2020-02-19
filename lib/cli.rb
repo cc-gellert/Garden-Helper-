@@ -8,7 +8,6 @@ class CommandLineInterface
     greeting
     ask_for_input 
   end
-
   def get_plants
     base_url = "https://www.marysheirloomseeds.com/blogs/news/square-foot-garden-plant-spacing-chart"
     plants_array = Scraper.scrape_index_page(base_url)
@@ -33,7 +32,7 @@ class CommandLineInterface
     when "view garden plots", "view plots", "display plots"
       display_plots 
       ask_for_input
-    when "plan a new garden plot", "new plot"
+    when "plan a new garden plot", "new plot", "make new plot", "make new garden plot", "add a plot"
       add_plot 
       ask_for_input
     when "edit a garden plot", "edit a plot", "edit plot"
@@ -105,19 +104,19 @@ class CommandLineInterface
       found_plot.print_self
       puts "Would you like to add plants, remove plants, or delete this plot?"
       input = gets.strip.downcase  
-      if input == "add plants" || "add"
+      if input == "add plants", "add"
         puts "What plant would you like to add?"
         plant = gets.strip.capitalize 
         puts "Ok, how many would you like to add?"
         number = gets.strip 
         found_plot.addPlant(plant, number)
-      elsif input == "remove plants" || "remove"
+      elsif input == "remove plants", "remove"
         puts "What plant would you like to remove?"
         plant = gets.strip.capitalize 
         puts "Ok, how many would you like to add?"
         number = gets.strip 
         found_plot.removePlant(plant, number)
-      elsif input == "delete this plot" || "delete"
+      elsif input == "delete this plot", "delete"
         GardenPlot.delete_by_name(name) 
       else 
         puts "I'm sorry, that's not a recognized command."
@@ -130,3 +129,5 @@ class CommandLineInterface
     puts "Goodbye! Have a great day."
   end 
 end 
+
+##need error handling for delete, remove plants that don't exist, and add plants that don't exist 
