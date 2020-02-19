@@ -16,14 +16,14 @@ class GardenPlot
   end 
   def removePlant(plant, number=1)
     found_plant_object = Plant.find_by_name(plant)
-    if(@plants[plant] >= number )
+    if(@plants[plant] >= number)
       @plants[plant] -= number 
       @footageleft += (number * found_plant_object.spacing)
     else 
       puts "There are only #{@plants[plant]} #{plant} plants here."
     end 
   end 
-  def addPlant(plant, number=1)
+  def addPlant(plant, number)
     found_plant_object = Plant.find_by_name(plant)
     needed_space = found_plant_object.spacing * number 
     if(@footageleft >= needed_space)
@@ -47,3 +47,4 @@ class GardenPlot
     puts "There is #{@footageleft} square feet left in this plot."
   end 
 end 
+#arithmetic operation issues with add plants and removeplants methods 
