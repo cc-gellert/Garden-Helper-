@@ -1,6 +1,7 @@
 require_relative './garden_plot.rb'
 require_relative './plant.rb'
 require_relative './scraper.rb'
+require 'pry'
 
 class CommandLineInterface  
   def run
@@ -72,7 +73,8 @@ class CommandLineInterface
       puts "There are currently no plots in this collection."
     else 
       GardenPlot.all.each do |plot|
-        puts "#{plot.name} has #{plants} and #{footage} square feet."
+        puts "#{plot.name} has #{plot.footage} square feet."
+        plot.plants.each {|plant| puts "#{plant}."} 
       end 
     end 
   end
@@ -113,6 +115,7 @@ class CommandLineInterface
           puts "Ok, how many would you like to add?"
           number = gets.strip.to_i 
           found_plot.addPlant(plant, number)
+          #need to have found plot readded- not defined on found_plant object 
         else 
           puts "I'm sorry, that plant doesn't seem to exist in our database."
         end
@@ -122,6 +125,7 @@ class CommandLineInterface
         if (verify_plant?(plant)) 
           puts "Ok, how many would you like to add?"
           number = gets.strip.to_i  
+          binding.pry
           found_plot.removePlant(plant, number)
         else 
           puts "I'm sorry, that doesn't appear to be a plant in this plot."
@@ -147,6 +151,6 @@ class CommandLineInterface
   end 
   
   def goodbye 
-    puts "Goodbye! Have a great day."
+    puts "Goodbye! Happy Gardening."
   end 
 end 

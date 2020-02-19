@@ -1,3 +1,5 @@
+require 'pry'
+
 class GardenPlot 
   attr_accessor :footage, :name, :plants, :footageleft   
   @@all = []
@@ -16,6 +18,7 @@ class GardenPlot
   end 
   def removePlant(plant, number=1)
     found_plant_object = Plant.find_by_name(plant)
+    #need to find plant first and verify it is in the plot 
     if(@plants[plant] >= number)
       @plants[plant] -= number 
       @footageleft += (number * found_plant_object.spacing)
@@ -27,7 +30,7 @@ class GardenPlot
     found_plant_object = Plant.find_by_name(plant)
     needed_space = found_plant_object.spacing * number 
     if(@footageleft >= needed_space)
-      @plants[plant] += number || @plants[plant] = number 
+      @plants[plant] = number || @plants[plant] += number 
       @footageleft -= needed_space  
     else 
       puts "There is not enough space in this plot."
@@ -51,4 +54,3 @@ class GardenPlot
     puts "There is #{@footageleft} square feet of space left in this plot."
   end 
 end 
-#arithmetic operation issues with add plants and removeplants methods undefined method `+' for nil:NilClass (NoMethodError)
