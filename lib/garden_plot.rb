@@ -39,7 +39,7 @@ class GardenPlot
   def self.delete_by_name(name)
     self.all.delete_if {|plot| plot.name == name} 
   end 
-  def print
+  def print_self
     puts "#{@name} garden plot has:"
     @plants.each do |plant, value|
       puts "#{value} #{plant} plants."

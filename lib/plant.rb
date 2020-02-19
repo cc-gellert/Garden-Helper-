@@ -19,9 +19,9 @@ class Plant
     end 
   end 
   def self.find_by_name(name)
-    self.all.select {|plant| plant.name.include?(name)}
+    self.all.detect {|plant| plant.name == name}
   end 
-  def print
+  def print_self
     puts "Information for #{@name}:"
     puts "Recommended spacing is #{@spacing} plants per square foot."
   end 

@@ -30,7 +30,7 @@ class CommandLineInterface
     when "list all plants", "list plants"
       display_plants 
       ask_for_input
-    when "view garden plots", "view plots"
+    when "view garden plots", "view plots", "display plots"
       display_plots 
       ask_for_input
     when "plan a new garden plot", "new plot"
@@ -55,7 +55,7 @@ class CommandLineInterface
     name = gets.strip.capitalize 
     found_plant = Plant.find_by_name(name)
     if(found_plant)
-      found_plant.print
+      found_plant.print_self
     else 
       puts "Sorry, there isn't a plant by that name in our collection."
     end 
@@ -82,7 +82,7 @@ class CommandLineInterface
     name = gets.strip 
     found_plot = GardenPlot.find_by_name(name)
     if(found_plot)
-      found_plot.print 
+      found_plot.print_self
     else 
       puts "Sorry, there isn't a plot by that name in this collection."
     end 
@@ -94,7 +94,7 @@ class CommandLineInterface
     puts "Ok, got it. And how many square feet does it have?"
     footage = gets.strip 
     new_plot = GardenPlot.new(footage, name)
-    new_plot.print 
+    new_plot.print_self 
   end 
   
   def edit_plot
@@ -102,7 +102,7 @@ class CommandLineInterface
     name = gets.strip 
     found_plot = GardenPlot.find_by_name(name)
     if(found_plot)
-      found_plot.print 
+      found_plot.print_self
       puts "Would you like to add plants, remove plants, or delete this plot?"
       input = gets.strip.downcase  
       if input == "add plants" || "add"
