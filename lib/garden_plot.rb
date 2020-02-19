@@ -40,11 +40,15 @@ class GardenPlot
     self.all.delete_if {|plot| plot.name == name} 
   end 
   def print_self
-    puts "#{@name} garden plot has:"
-    @plants.each do |plant, value|
-      puts "#{value} #{plant} plants."
+    puts "#{@name} garden plot:"
+    if(@plants.size > 0)
+      @plants.each do |plant, value|
+        puts "Has #{value} #{plant} plants."
+      end 
+    else 
+      puts "There are currently no plants here yet."
     end 
-    puts "There is #{@footageleft} square feet left in this plot."
+    puts "There is #{@footageleft} square feet of space left in this plot."
   end 
 end 
-#arithmetic operation issues with add plants and removeplants methods 
+#arithmetic operation issues with add plants and removeplants methods undefined method `+' for nil:NilClass (NoMethodError)

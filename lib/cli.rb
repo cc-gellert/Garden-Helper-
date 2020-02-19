@@ -23,13 +23,13 @@ class CommandLineInterface
     when "lookup a plant"
       display_plant
       ask_for_input 
-    when "lookup a garden plot"
+    when "lookup a garden plot", "lookup a plot"
       display_plot
       ask_for_input
     when "list all plants", "list plants"
       display_plants 
       ask_for_input
-    when "view garden plots", "view plots", "display plots"
+    when "view garden plots", "view plots", "display plots", "list plots"
       display_plots 
       ask_for_input
     when "plan a new garden plot", "new plot", "make new plot", "make new garden plot", "add a plot"
@@ -42,7 +42,7 @@ class CommandLineInterface
       goodbye 
       exit 
     else 
-      puts "Sorry, that doesn't look like a recognized command. You may lookup a plant, lookup a garden plot, list all plants, plan a new garden plot,view your garden plots, or edit a garden plot."
+      puts "Sorry, that doesn't look like a recognized command. You may lookup a plant, lookup a garden plot, list all plants, plan a new garden plot,view your garden plots or edit a garden plot."
       ask_for_input
     end 
   end 
