@@ -123,7 +123,7 @@ class CommandLineInterface
       when "remove plants", "remove"
         puts "What plant would you like to remove?"
         plant = gets.strip.capitalize 
-        if (verify_plant?(plant)) 
+        if (verify_plant?(plant)) && (plant_in_garden?(plant))
           puts "Ok, how many would you like to add?"
           number = gets.strip.to_i  
           binding.pry
@@ -149,6 +149,9 @@ class CommandLineInterface
     else 
       true  
     end 
+  end 
+  
+  def plant_in_garden?(plant)
   end 
   
   def goodbye 
