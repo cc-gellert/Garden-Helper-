@@ -51,7 +51,8 @@ class CommandLineInterface
   
   def display_plant
     puts "Great! What plant are you looking for?"
-    name = gets.strip.capitalize 
+    name_splits = gets.strip.split(" ")
+    name = name_splits.map {|word| word.capitalize}.join(" ")
     found_plant = Plant.find_by_name(name)
     if(found_plant)
       found_plant.print_self
