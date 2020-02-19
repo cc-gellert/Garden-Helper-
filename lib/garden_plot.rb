@@ -34,13 +34,13 @@ class GardenPlot
     end 
   end 
   def self.find_by_name(name)
-    self.all.select {|plot| plot.name == name}
+    self.all.detect {|plot| plot.name == name}
   end
   def self.delete_by_name(name)
     self.all.delete_if {|plot| plot.name == name} 
   end 
   def print
-    puts "#{@name} garden plot is #{@footage} square feet and has:"
+    puts "#{@name} garden plot has:"
     @plants.each do |plant, value|
       puts "#{value} #{plant} plants."
     end 

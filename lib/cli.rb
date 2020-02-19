@@ -100,25 +100,30 @@ class CommandLineInterface
   def edit_plot
     puts "Ok, great. What is the name of the plot you would like to change?"
     name = gets.strip 
-    display_plot(name)
-    puts "Would you like to add plants, remove plants, or delete this plot?"
-    input = gets.strip.downcase  
-    if input == "add plants" || "add"
-      puts "What plant would you like to add?"
-      plant = gets.strip.capitalize 
-      puts "Ok, how many would you like to add?"
-      number = gets.strip 
-      found_plot.addPlant(plant, number)
-    elsif input == "remove plants" || "remove"
-      puts "What plant would you like to remove?"
-      plant = gets.strip.capitalize 
-      puts "Ok, how many would you like to add?"
-      number = gets.strip 
-      found_plot.removePlant(plant, number)
-    elsif input == "delete this plot" || "delete"
-      GardenPlot.delete_by_name(name) 
+    found_plot = GardenPlot.find_by_name(name)
+    if(found_plot)
+      found_plot.print 
+      puts "Would you like to add plants, remove plants, or delete this plot?"
+      input = gets.strip.downcase  
+      if input == "add plants" || "add"
+        puts "What plant would you like to add?"
+        plant = gets.strip.capitalize 
+        puts "Ok, how many would you like to add?"
+        number = gets.strip 
+        found_plot.addPlant(plant, number)
+      elsif input == "remove plants" || "remove"
+        puts "What plant would you like to remove?"
+        plant = gets.strip.capitalize 
+        puts "Ok, how many would you like to add?"
+        number = gets.strip 
+        found_plot.removePlant(plant, number)
+      elsif input == "delete this plot" || "delete"
+        GardenPlot.delete_by_name(name) 
+      else 
+        puts "I'm sorry, that's not a recognized command."
+      end
     else 
-      puts "I'm sorry, that's not a recognized command."
+      puts "Sorry, there isn't a plot by that name in this collection."
     end 
   end
   def goodbye 
