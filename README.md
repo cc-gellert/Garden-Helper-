@@ -24,7 +24,7 @@ This gem comes with a list of vegetables, herbs, and fruit spacing guides includ
 
 To view all garden plots use the command "view plots" or "list plots". To make a new plot, use "new plot" and then name your new garden plot and input the available space in square feet. You can then add plants to this plot or remove using the "edit plot" command and the space left will adjust accordingly. At any time you can view your plots using "lookup a plot" or delete a plot using "delete plot". 
 
-To exit simply use the command "exit" or "quit".  
+To exit simply use the command "exit" or "quit". Make sure to write down or save a copy of the plots you wish to save before you go!  
 
 ## Development
 
