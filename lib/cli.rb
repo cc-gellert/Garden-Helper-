@@ -123,12 +123,12 @@ class CommandLineInterface
       when "remove plants", "remove"
         puts "What plant would you like to remove?"
         plant = gets.strip.capitalize 
-        if (verify_plant?(plant)) && (found_plot.plant_in_garden?(plant))
-          puts "Ok, how many would you like to add?"
+        if (found_plot.plant_in_garden?(plant) == true)
+          puts "Ok, how many would you like to remove?"
           number = gets.strip.to_i  
-          binding.pry
           found_plot.removePlant(plant, number)
         else 
+          binding.pry 
           puts "I'm sorry, that doesn't appear to be a plant in this plot."
         end 
       when "delete this plot", "delete"
@@ -142,7 +142,7 @@ class CommandLineInterface
     end 
   end
   
-  def verify_plant?(plant)
+ def verify_plant?(plant)
     found_plant = Plant.find_by_name(plant)
     if !(found_plant)
       false
