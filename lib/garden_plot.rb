@@ -30,7 +30,11 @@ class GardenPlot
     found_plant_object = Plant.find_by_name(plant)
     needed_space = found_plant_object.spacing * number 
     if(@footageleft >= needed_space)
-      @plants[plant] = number || @plants[plant] += number 
+      if(@plants[plant])
+        @plants[plant] += number 
+      else 
+        @plants[plant] = number 
+      end  
       @footageleft -= needed_space  
     else 
       puts "There is not enough space in this plot."
@@ -52,5 +56,13 @@ class GardenPlot
       puts "There are currently no plants here yet."
     end 
     puts "There is #{@footageleft} square feet of space left in this plot."
+  end 
+  def plant_in_garden?(plant)
+    found_plant = Plant.find_by_name(plant)
+    if @plants.include?(found_plant)
+      true 
+    else 
+      false 
+    end 
   end 
 end 

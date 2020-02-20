@@ -25,7 +25,7 @@ class CommandLineInterface
     when "lookup a plant"
       display_plant
       ask_for_input 
-    when "lookup a garden plot", "lookup a plot"
+    when "lookup a garden plot", "lookup a plot", "view a plot"
       display_plot
       ask_for_input
     when "list all plants", "list plants"
@@ -123,7 +123,7 @@ class CommandLineInterface
       when "remove plants", "remove"
         puts "What plant would you like to remove?"
         plant = gets.strip.capitalize 
-        if (verify_plant?(plant)) && (plant_in_garden?(plant))
+        if (verify_plant?(plant)) && (found_plot.plant_in_garden?(plant))
           puts "Ok, how many would you like to add?"
           number = gets.strip.to_i  
           binding.pry
@@ -150,10 +150,7 @@ class CommandLineInterface
       true  
     end 
   end 
-  
-  def plant_in_garden?(plant)
-  end 
-  
+
   def goodbye 
     puts "Goodbye! Happy Gardening."
   end 
