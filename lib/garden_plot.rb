@@ -21,7 +21,7 @@ class GardenPlot
     @@all << self 
   end 
   
-  def removePlant(plant, number=1)
+  def removePlant(plant, number)
     found_plant_object = Plant.find_by_name(plant)
     if(@plants[plant] >= number)
       @plants[plant] -= number 

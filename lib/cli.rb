@@ -112,7 +112,8 @@ class CommandLineInterface
       case input 
       when "add plants", "add"
         puts "What plant would you like to add?"
-        plant = gets.strip.capitalize
+        plant_splits = gets.strip.split(" ")
+        plant = plant_splits.map {|word| word.capitalize}.join(" ")
         if (verify_plant?(plant)) 
           puts "Ok, how many would you like to add?"
           number = gets.strip.to_i 
@@ -122,13 +123,13 @@ class CommandLineInterface
         end
       when "remove plants", "remove"
         puts "What plant would you like to remove?"
-        plant = gets.strip.capitalize 
+        plant_splits = gets.strip.split(" ")
+        plant = plant_splits.map {|word| word.capitalize}.join(" ")
         if (found_plot.plant_in_garden?(plant) == true)
           puts "Ok, how many would you like to remove?"
           number = gets.strip.to_i  
           found_plot.removePlant(plant, number)
         else 
-          binding.pry 
           puts "I'm sorry, that doesn't appear to be a plant in this plot."
         end 
       when "delete this plot", "delete"
