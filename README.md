@@ -1,6 +1,6 @@
 # GardenHelper
 
-Welcome to GardenHelper, a fun and useful CLI application for garden planning and growing. Use this app to access growing guides and plant information, as well as plotting out your dream garden based on available space in your plot. Look up individual plant guides for information on growing times, spacing needs, companion plants, and plants to avoid. Or input the space you have available and add plants to it until full. Your spring and autumn garden planning just got much easier! 
+Welcome to GardenHelper, a fun and useful CLI application for garden planning and growing. Use this app to access individual plant square-foot gardening spacing guides, as well as plotting out your dream garden based on available space in your plot. Using the square foot gardening method, you can maximize your available space. Your spring and autumn garden planning just got much easier! 
 
 ## Installation
 
@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This gem comes with a list of vegetables, herbs, and fruit spacing guides included. You may see the entire list by inputting the command "list plants" or "list all plants". You can also lookup a particular plant's spacing needs with the command "lookup a plant" and putting in the plant you're looking for. 
+
+To view all garden plots use the command "view plots" or "list plots". To make a new plot, use "new plot" and then name your new garden plot and input the available space in square feet. You can then add plants to this plot or remove using the "edit plot" command and the space left will adjust accordingly. At any time you can view your plots using "lookup a plot" or delete a plot using "delete plot". 
+
+To exit simply use the command "exit" or "quit".  
 
 ## Development
 
