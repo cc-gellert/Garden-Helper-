@@ -1,5 +1,3 @@
-require 'pry'
-
 class GardenPlot 
   attr_accessor :footage, :name, :plants, :footageleft   
   

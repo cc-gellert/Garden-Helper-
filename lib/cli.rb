@@ -1,7 +1,6 @@
 require_relative './garden_plot.rb'
 require_relative './plant.rb'
 require_relative './scraper.rb'
-require 'pry'
 
 class CommandLineInterface  
   def run
@@ -9,14 +8,17 @@ class CommandLineInterface
     greeting
     ask_for_input 
   end
+  
   def get_plants
     base_url = "https://www.marysheirloomseeds.com/blogs/news/square-foot-garden-plant-spacing-chart"
     plants_array = Scraper.scrape_index_page(base_url)
     Plant.create_from_array(plants_array)
   end
+  
   def greeting 
     puts "Hello! Welcome to Garden-Helper! Here you can lookup a plant, lookup a garden plot, list all plants, plan a new garden plot, view your garden plots, or edit a garden plot."
   end 
+  
   def ask_for_input 
     puts "---------------------------"
     puts "What would you like to do?"
@@ -48,8 +50,6 @@ class CommandLineInterface
       ask_for_input
     end 
   end 
-  
-  #helper methods 
   
   def display_plant
     puts "Great! What plant are you looking for?"
@@ -111,30 +111,11 @@ class CommandLineInterface
       input = gets.strip.downcase  
       case input 
       when "add plants", "add"
-        puts "What plant would you like to add?"
-        plant_splits = gets.strip.split(" ")
-        plant = plant_splits.map {|word| word.capitalize}.join(" ")
-        if (verify_plant?(plant)) 
-          puts "Ok, how many would you like to add?"
-          number = gets.strip.to_i 
-          found_plot.addPlant(plant, number)
-        else 
-          puts "I'm sorry, that plant doesn't seem to exist in our database."
-        end
+        add_plants(found_plot)
       when "remove plants", "remove"
-        puts "What plant would you like to remove?"
-        plant_splits = gets.strip.split(" ")
-        plant = plant_splits.map {|word| word.capitalize}.join(" ")
-        if (found_plot.plant_in_garden?(plant) == true)
-          puts "Ok, how many would you like to remove?"
-          number = gets.strip.to_i  
-          found_plot.removePlant(plant, number)
-        else 
-          puts "I'm sorry, that doesn't appear to be a plant in this plot."
-        end 
+        remove_plants(found_plot)
       when "delete this plot", "delete"
-        GardenPlot.delete_by_name(name) 
-        puts "Ok, this plot has been deleted." 
+        remove_plot(name)
       else 
         puts "Sorry, that's not a recognized command."
       end 
@@ -150,6 +131,39 @@ class CommandLineInterface
     else 
       true  
     end 
+  end 
+  
+  def add_plants(found_plot)
+    puts "What plant would you like to add?"
+    plant_splits = gets.strip.split(" ")
+    plant = plant_splits.map {|word| word.capitalize}.join(" ")
+    if (verify_plant?(plant)) 
+      puts "Ok, how many would you like to add?"
+      number = gets.strip.to_i 
+      found_plot.addPlant(plant, number)
+      found_plot.print_self
+    else 
+      puts "I'm sorry, that plant doesn't seem to exist in our database."
+    end
+  end 
+  
+  def remove_plants(found_plot)
+    puts "What plant would you like to remove?"
+    plant_splits = gets.strip.split(" ")
+    plant = plant_splits.map {|word| word.capitalize}.join(" ")
+    if (found_plot.plant_in_garden?(plant) == true)
+      puts "Ok, how many would you like to remove?"
+      number = gets.strip.to_i  
+      found_plot.removePlant(plant, number)
+      found_plot.print_self 
+    else 
+      puts "I'm sorry, that doesn't appear to be a plant in this plot."
+    end   
+  end 
+  
+  def remove_plot(name) 
+    GardenPlot.delete_by_name(name) 
+    puts "Ok, this plot has been deleted." 
   end 
 
   def goodbye 

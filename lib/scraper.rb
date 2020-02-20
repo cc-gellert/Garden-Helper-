@@ -3,6 +3,7 @@ require 'nokogiri'
 
 class Scraper 
   attr_accessor :doc 
+  
   def self.scrape_index_page(url)
     @doc = Nokogiri::HTML(open(url))
     plants = [] 
