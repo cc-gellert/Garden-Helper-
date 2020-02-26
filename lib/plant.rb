@@ -33,3 +33,4 @@ class Plant
     puts "Recommended spacing is #{@spacing} plants per square foot."
   end 
 end 
+    
